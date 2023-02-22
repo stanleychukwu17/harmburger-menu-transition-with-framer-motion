@@ -18,7 +18,7 @@ const App = () => {
             </div>
             <div className="">
                 <div className="HomePageDts">
-                    Click on the menu button
+                    <div className="">Click on the menu button</div>
                 </div>
             </div>
         </div>
