@@ -1,6 +1,7 @@
 import './app.scss';
 // import { motion } from 'framer-motion';
 // import { gsap } from 'gsap';
+// https://huemint.com/brand-intersection/#palette=f8ffff-17365b-2c7e8a-d3beaf - color palette
 
 
 // from react-icons
