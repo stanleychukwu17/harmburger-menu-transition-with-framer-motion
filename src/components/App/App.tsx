@@ -49,9 +49,46 @@ const App = () => {
                 <div className="productList">
                     <div className="PrdBoxCvr">
                         <div className="BoxGen B1">
-                            <div className="BxTitle">This is the section for title</div>
+                            <div className="BxTitle">{images[0].title}</div>
                             <div className="BxLine2"></div>
-                            <div className="BxImg"></div>
+                            <div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                            </div>
+                        </div>
+                        <div className="BoxGen B2">
+                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine2"></div>
+                            <div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                            </div>
+                        </div>
+                        <div className="BoxGen B3">
+                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine2"></div>
+                            <div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                            </div>
+                        </div>
+                        <div className="BoxGen B4">
+                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine2"></div>
+                            <div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                            </div>
+                        </div>
+                        <div className="BoxGen B5">
+                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine2"></div>
+                            <div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                            </div>
+                        </div>
+                        <div className="BoxGen B6">
+                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine2"></div>
+                            <div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                            </div>
                         </div>
                     </div>
                 </div>
