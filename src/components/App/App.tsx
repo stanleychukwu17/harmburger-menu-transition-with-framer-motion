@@ -7,6 +7,20 @@ import './app.scss';
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 
+// import the images
+type imgType = {
+    id:number,
+    img:string,
+}
+const images: imgType[] = []
+// load the images to be displayed into the array database
+for (let index = 1; index < 7; index++) {
+    images.push({
+        id: index,
+        img: require(`../../assets/photo${index}.jfif`),
+    })
+}
+
 const App = () => {
     return (
         <div className="AppMain">
@@ -20,6 +34,13 @@ const App = () => {
             <div className="">
                 <div className="HomePageDts">
                     <div className="">Click on the menu button</div>
+                </div>
+                <div className="productList">
+                    <div className="PrdBoxCvr">
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                    </div>
                 </div>
             </div>
         </div>
