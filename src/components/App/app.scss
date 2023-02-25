@@ -40,9 +40,9 @@ body {
         font-weight: 700;
     }
 
-    .productList {
+    .productList, .productView {
         width: 100vw;
-        height: 92.5vh;
+        height: 110vh;
         display: flex;
         position: relative;
         justify-content: center;
@@ -60,18 +60,17 @@ body {
                 align-items: flex-end;
 
                 .BxTitle {
-                    font-size: u1.rem(30);
-                    font-weight: 600;
+                    font-size: u1.rem(28);
+                    font-weight: 400;
                 }
-                .BxLine2 {
+                .BxLine1, .BxLine2 {
                     position: relative;
-                    width: 55%;
-                    margin: 0 0 0 u1.rem(20);
+                    width: 56%;
+                    margin: 0 u1.rem(20);
                     bottom: 15px;
-                    border-bottom: 3px solid #17365b;
+                    border-bottom: 1px solid #17365b;
                 }
                 .BxImg {
-                    // @include u1.block_display();
                     width: 70px;
                     height: 70px;
                     position: absolute;
@@ -86,6 +85,71 @@ body {
                         object-fit: cover;
                         border-radius: 4px;
                     }
+                }
+
+                &.B2 {
+                    .BxLine1 { width: 40%; }
+                    .BxLine2 { width: 16%; }
+                    .BxImg { left: 20%; }
+                }
+                &.B3 {
+                    .BxLine1 { width: 16%; }
+                    .BxLine2 { width: 40%; }
+                    .BxImg { left: 70%; }
+                }
+                &.B4 {
+                    .BxLine1 { width: 25%; }
+                    .BxLine2 { width: 21%; }
+                    .BxImg { left: 10%; }
+                }
+                &.B5 {
+                    .BxLine1 { width: 32%; }
+                    .BxLine2 { width: 20%; }
+                    .BxImg { left: 87%; }
+                }
+            }
+        }
+    }
+
+    .productView {
+        background-color: olive;
+
+        .ProductMCvr {
+            position: relative;
+            width: 900px;
+            height: 600px;
+
+            .ProductImg {
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 4px;
+                }
+            }
+
+            .ProductTitle {
+                @include u1.block_display();
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                // z-index: 1; - if you allow z-index, the mix-blend-mode will not work
+                font-size: u1.rem(130);
+                font-weight: 600;
+
+                .Ti2 {
+                    padding-inline: 20px;
+                    text-align: center;
+                    mix-blend-mode: difference; // you can also try mix-blend-mode: difference;
+                    filter: invert(1);
                 }
             }
         }

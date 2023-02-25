@@ -14,7 +14,7 @@ const listOfTitles = [
     'Air max x-97 off-white',
     'Kanye west yezzy 700 Geode',
     'Nike Ronaldo Rondo Black up',
-    'Nike Light Green super Od-110',
+    'Nike Light super Od-110',
 ]
 type imgType = {
     id:number,
@@ -56,39 +56,53 @@ const App = () => {
                             </div>
                         </div>
                         <div className="BoxGen B2">
-                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine1"></div>
+                            <div className="BxTitle">{images[1].title}</div>
                             <div className="BxLine2"></div>
                             <div className="BxImg">
-                                <img src={images[0].img} alt="" />
+                                <img src={images[1].img} alt="" />
                             </div>
                         </div>
                         <div className="BoxGen B3">
-                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine1"></div>
+                            <div className="BxTitle">{images[2].title}</div>
                             <div className="BxLine2"></div>
                             <div className="BxImg">
-                                <img src={images[0].img} alt="" />
+                                <img src={images[2].img} alt="" />
                             </div>
                         </div>
                         <div className="BoxGen B4">
-                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine1"></div>
+                            <div className="BxTitle">{images[3].title}</div>
                             <div className="BxLine2"></div>
                             <div className="BxImg">
-                                <img src={images[0].img} alt="" />
+                                <img src={images[3].img} alt="" />
                             </div>
                         </div>
                         <div className="BoxGen B5">
-                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxLine1"></div>
+                            <div className="BxTitle">{images[4].title}</div>
                             <div className="BxLine2"></div>
                             <div className="BxImg">
-                                <img src={images[0].img} alt="" />
+                                <img src={images[4].img} alt="" />
                             </div>
                         </div>
                         <div className="BoxGen B6">
-                            <div className="BxTitle">{images[0].title}</div>
+                            <div className="BxTitle">{images[5].title}</div>
                             <div className="BxLine2"></div>
                             <div className="BxImg">
-                                <img src={images[0].img} alt="" />
+                                <img src={images[5].img} alt="" />
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="productView">
+                    <div className="ProductMCvr">
+                        <div className="ProductImg">
+                            <img src={images[4].img} alt="" />
+                        </div>
+                        <div className="ProductTitle">
+                            <div className="Ti2">{images[0].title}</div>
                         </div>
                     </div>
                 </div>
