@@ -42,5 +42,15 @@ body {
     .productList {
         width: 100vw;
         height: 92.5vh;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+        .PrdBoxCvr {
+            width: 800px;
+            font-size: u1.rem(30);
+            font-weight: 700;
+        }
     }
 }

@@ -8,8 +8,17 @@ import './app.scss';
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 
 // import the images
+const listOfTitles = [
+    'Nike Air Max 90',
+    'New Balance X-90 Reboot',
+    'Air max x-97 off-white',
+    'Kanye west yezzy 700 Geode',
+    'Nike Ronaldo Rondo Black up',
+    'Nike Light Green super Od-110',
+]
 type imgType = {
     id:number,
+    title: string,
     img:string,
 }
 const images: imgType[] = []
@@ -17,9 +26,11 @@ const images: imgType[] = []
 for (let index = 1; index < 7; index++) {
     images.push({
         id: index,
+        title: listOfTitles[index - 1],
         img: require(`../../assets/photo${index}.jfif`),
     })
 }
+console.log(images)
 
 const App = () => {
     return (
@@ -37,9 +48,11 @@ const App = () => {
                 </div>
                 <div className="productList">
                     <div className="PrdBoxCvr">
-                        <div className=""></div>
-                        <div className=""></div>
-                        <div className=""></div>
+                        <div className="BoxGen B1">
+                            <div className="BxTitle">This is the section for title</div>
+                            <div className="BxLine2"></div>
+                            <div className="BxImg"></div>
+                        </div>
                     </div>
                 </div>
             </div>
