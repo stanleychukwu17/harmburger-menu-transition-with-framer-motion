@@ -4,7 +4,7 @@
 
 body {
     background-color: #f8ffff !important;
-    color: #17365b;
+    color: #000;
 }
 .AppMain {
     @include u1.block_display();
@@ -32,7 +32,7 @@ body {
 
     .HomePageDts {
         width: 100vw;
-        height: 92.5vh;
+        height: 81vh;
         display: flex;
         align-items: center;
         justify-content: center;

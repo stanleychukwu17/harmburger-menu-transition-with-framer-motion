@@ -8,7 +8,7 @@ import './app.scss';
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 
 // import the images
-const listOfTitles = [
+const listOfTitles: string[] = [
     'Nike Air Max 90',
     'New Balance X-90 Reboot',
     'Air max x-97 off-white',
@@ -30,8 +30,9 @@ for (let index = 1; index < 7; index++) {
         img: require(`../../assets/photo${index}.jfif`),
     })
 }
-console.log(images)
 
+
+// let the show begin
 const App = () => {
     return (
         <div className="AppMain">
@@ -44,7 +45,7 @@ const App = () => {
             </div>
             <div className="">
                 <div className="HomePageDts">
-                    <div className="">Click on the menu button</div>
+                    <div>Click on the menu button</div>
                 </div>
                 <div className="productList">
                     <div className="PrdBoxCvr">
