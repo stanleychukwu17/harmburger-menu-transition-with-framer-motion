@@ -124,6 +124,10 @@ const App = () => {
                     </div>
                 </div>
             </div>
+            <div className="absoluteCover">
+                <div className="absoluteChild a1"></div>
+                <div className="absoluteChild a2"></div>
+            </div>
         </div>
     )
 }
