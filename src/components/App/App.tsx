@@ -41,8 +41,8 @@ const App = () => {
     return (
         <div className="AppMain">
             <div className="header">
-                <div className="HLink">Products</div>
-                <motion.div variants={HMenuParVariant} initial='initial' animate='animate' className="HMenu">
+                <motion.div variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink">Products</motion.div>
+                <motion.div variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu">
                     {phase === 'side1' && (
                         <motion.div ><AiOutlineMenu/></motion.div>
                     )}
@@ -51,68 +51,66 @@ const App = () => {
                     )}
                 </motion.div>
             </div>
-            <div className="">
-                <div className="HomePageDts">
-                    <div>Click on the menu button</div>
-                </div>
-                <div className="productList">
-                    <div className="PrdBoxCvr">
-                        <div className="BoxGen B1">
-                            <div className="BxTitle">{images[0].title}</div>
-                            <div className="BxLine2"></div>
-                            <div className="BxImg">
-                                <img src={images[0].img} alt="" />
-                            </div>
+            <motion.div variants={HMenuParVariant} custom={2} initial='initial' animate='animate' className="HomePageDts">
+                <div>Click on the menu button</div>
+            </motion.div>
+            <div className="productList">
+                <div className="PrdBoxCvr">
+                    <div className="BoxGen B1">
+                        <div className="BxTitle">{images[0].title}</div>
+                        <div className="BxLine2"></div>
+                        <div className="BxImg">
+                            <img src={images[0].img} alt="" />
                         </div>
-                        <div className="BoxGen B2">
-                            <div className="BxLine1"></div>
-                            <div className="BxTitle">{images[1].title}</div>
-                            <div className="BxLine2"></div>
-                            <div className="BxImg">
-                                <img src={images[1].img} alt="" />
-                            </div>
+                    </div>
+                    <div className="BoxGen B2">
+                        <div className="BxLine1"></div>
+                        <div className="BxTitle">{images[1].title}</div>
+                        <div className="BxLine2"></div>
+                        <div className="BxImg">
+                            <img src={images[1].img} alt="" />
                         </div>
-                        <div className="BoxGen B3">
-                            <div className="BxLine1"></div>
-                            <div className="BxTitle">{images[2].title}</div>
-                            <div className="BxLine2"></div>
-                            <div className="BxImg">
-                                <img src={images[2].img} alt="" />
-                            </div>
+                    </div>
+                    <div className="BoxGen B3">
+                        <div className="BxLine1"></div>
+                        <div className="BxTitle">{images[2].title}</div>
+                        <div className="BxLine2"></div>
+                        <div className="BxImg">
+                            <img src={images[2].img} alt="" />
                         </div>
-                        <div className="BoxGen B4">
-                            <div className="BxLine1"></div>
-                            <div className="BxTitle">{images[3].title}</div>
-                            <div className="BxLine2"></div>
-                            <div className="BxImg">
-                                <img src={images[3].img} alt="" />
-                            </div>
+                    </div>
+                    <div className="BoxGen B4">
+                        <div className="BxLine1"></div>
+                        <div className="BxTitle">{images[3].title}</div>
+                        <div className="BxLine2"></div>
+                        <div className="BxImg">
+                            <img src={images[3].img} alt="" />
                         </div>
-                        <div className="BoxGen B5">
-                            <div className="BxLine1"></div>
-                            <div className="BxTitle">{images[4].title}</div>
-                            <div className="BxLine2"></div>
-                            <div className="BxImg">
-                                <img src={images[4].img} alt="" />
-                            </div>
+                    </div>
+                    <div className="BoxGen B5">
+                        <div className="BxLine1"></div>
+                        <div className="BxTitle">{images[4].title}</div>
+                        <div className="BxLine2"></div>
+                        <div className="BxImg">
+                            <img src={images[4].img} alt="" />
                         </div>
-                        <div className="BoxGen B6">
-                            <div className="BxTitle">{images[5].title}</div>
-                            <div className="BxLine2"></div>
-                            <div className="BxImg">
-                                <img src={images[5].img} alt="" />
-                            </div>
+                    </div>
+                    <div className="BoxGen B6">
+                        <div className="BxTitle">{images[5].title}</div>
+                        <div className="BxLine2"></div>
+                        <div className="BxImg">
+                            <img src={images[5].img} alt="" />
                         </div>
                     </div>
                 </div>
-                <div className="productView">
-                    <div className="ProductMCvr">
-                        <div className="ProductImg">
-                            <img src={images[4].img} alt="" />
-                        </div>
-                        <div className="ProductTitle">
-                            <div className="Ti2">{images[0].title}</div>
-                        </div>
+            </div>
+            <div className="productView">
+                <div className="ProductMCvr">
+                    <div className="ProductImg">
+                        <img src={images[4].img} alt="" />
+                    </div>
+                    <div className="ProductTitle">
+                        <div className="Ti2">{images[0].title}</div>
                     </div>
                 </div>
             </div>
