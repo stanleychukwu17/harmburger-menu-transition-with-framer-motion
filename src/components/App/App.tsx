@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './app.scss';
-import { motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 // import { gsap } from 'gsap';
 // https://huemint.com/brand-intersection/#palette=f8ffff-17365b-2c7e8a-d3beaf - color palette
 
@@ -36,19 +36,29 @@ for (let index = 1; index < 7; index++) {
 
 // let the show begin
 const App = () => {
-    const [phase, setPhase] = useState('side1')
+    const [phase, setPhase] = useState<'side1'|'side2'>('side1')
+    const menuControl = useAnimationControls()
+
+
+    // animates the menu from = to X
+    useEffect(() => {
+        if (phase === 'side1') {
+            menuControl.start({y:0})
+        } else if (phase === 'side2') {
+            menuControl.start({y:-43})
+        }
+
+    }, [phase, menuControl])
 
     return (
         <div className="AppMain">
             <div className="header">
                 <motion.div variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink">Products</motion.div>
-                <motion.div variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu">
-                    {phase === 'side1' && (
-                        <motion.div ><AiOutlineMenu/></motion.div>
-                    )}
-                    {phase === 'side2' && (
-                        <motion.div ><AiOutlineClose/></motion.div>
-                    )}
+                <motion.div variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu" onClick={() => { phase === 'side1' ? setPhase('side2') : setPhase('side1') }}>
+                    <motion.div animate={menuControl} className="">
+                        <motion.div><AiOutlineMenu/></motion.div>
+                        <motion.div><AiOutlineClose/></motion.div>
+                    </motion.div>
                 </motion.div>
             </div>
             <motion.div variants={HMenuParVariant} custom={2} initial='initial' animate='animate' className="HomePageDts">
