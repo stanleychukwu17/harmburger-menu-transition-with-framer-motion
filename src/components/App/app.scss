@@ -166,6 +166,7 @@ body {
         bottom: 0;
         left: 0;
         z-index: 1;
+        display: none;
 
         .absoluteChild {
             width: 50%;
@@ -173,11 +174,10 @@ body {
             float: left;
             position: relative;
             background-color: #efeff0;
-            transform: scaleY(.05);
+            transform: scaleY(0);
             transform-origin: top;
 
-            &.a1 {
-            }
+            // &.a1 {}
             &.a2 {
                 transform-origin: bottom;
             }

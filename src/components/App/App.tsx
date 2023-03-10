@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './app.scss';
 import { motion, useAnimationControls } from 'framer-motion';
-// import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 // https://huemint.com/brand-intersection/#palette=f8ffff-17365b-2c7e8a-d3beaf - color palette
 
 
@@ -36,9 +36,28 @@ for (let index = 1; index < 7; index++) {
 
 // let the show begin
 const App = () => {
-    const [phase, setPhase] = useState<'side1'|'side2'>('side1')
+    const [phase, setPhase] = useState<'side1'|'side2'|'side3'>('side1')
     const menuControl = useAnimationControls()
+    const t1 = useRef<gsap.core.Timeline>({} as gsap.core.Timeline)
 
+    const runBlockAnimation1 = () => {
+        gsap.set('.absoluteCover', {display: 'block'})
+        gsap.set('.absoluteChild', {scaleY: 0})
+        t1.current.play()
+    }
+
+    useEffect(() => {
+        t1.current = gsap.timeline({defaults:{duration:1}})
+
+        t1.current.to('.a1', { scaleY: 1 })
+            .to('.a2', {scaleY: 1, delay:-1})
+            .to('.a1', {scaleY: 0, delay: .2,  })
+            .to('.a2', {scaleY: 0, delay: -.2})
+
+        t1.current.pause()
+        return () => {}
+    }, [])
+    
 
     // animates the menu from = to X
     useEffect(() => {
@@ -46,15 +65,25 @@ const App = () => {
             menuControl.start({y:0})
         } else if (phase === 'side2') {
             menuControl.start({y:-43})
-        }
+        } else if (phase === 'side3') {
 
+        }
+        
     }, [phase, menuControl])
 
     return (
         <div className="AppMain">
             <div className="header">
                 <motion.div variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink">Products</motion.div>
-                <motion.div variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu" onClick={() => { phase === 'side1' ? setPhase('side2') : setPhase('side1') }}>
+                <motion.div
+                    variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu"
+                    onClick={
+                        () => {
+                            phase === 'side1' ? setPhase('side2') : setPhase('side1')
+                            runBlockAnimation1()
+                        }
+                    }
+                >
                     <motion.div animate={menuControl} className="">
                         <motion.div><AiOutlineMenu/></motion.div>
                         <motion.div><AiOutlineClose/></motion.div>
