@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import { HMenuParVariant } from './Variant';
+import { HMenuParVariant, titleAnimation } from './Variant';
 
 // import the images
 const listOfTitles: string[] = [
@@ -38,6 +38,7 @@ for (let index = 1; index < 7; index++) {
 const App = () => {
     const [phase, setPhase] = useState<'side1'|'side2'|'side3'>('side1')
     const menuControl = useAnimationControls()
+    const phase2Control = useAnimationControls()
     const tControl = useRef<0|1>(0)
 
     const runBlockAnimation1 = () => {
@@ -68,12 +69,15 @@ const App = () => {
             menuControl.start({y:0})
 
             gsap.set('.productList, .productView', {display: 'none', delay:1})
-            gsap.set('.HomePageDts', {display: 'flex', delay:1})
+            gsap.set('.HomePageDts', {display: 'flex', delay:1.2})
         } else if (phase === 'side2') {
             menuControl.start({y:-43})
 
             gsap.set('.HomePageDts, .productView', {display: 'none', delay:1})
-            gsap.set('.productList', {display: 'flex', delay:1})
+            gsap.set('.productList', {display: 'flex', delay:1.2})
+
+            phase2Control.set('initial')
+            phase2Control.start('animate')
         } else if (phase === 'side3') {
 
         }
@@ -83,7 +87,9 @@ const App = () => {
 
 
     useEffect(() => {
-        setPhase('side2')
+        setTimeout(() => {
+            setPhase('side2')
+        }, 500)
     }, [])
     
 
@@ -112,15 +118,15 @@ const App = () => {
             <div className="productList">
                 <div className="PrdBoxCvr">
                     <div className="BoxGen B1">
-                        <div className="BxTitle">{images[0].title}</div>
-                        <div className="BxLine2"></div>
-                        <div className="BxImg">
+                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5}>{images[0].title}</motion.div>
+                        <motion.div className="BxLine2"></motion.div>
+                        <motion.div className="BxImg">
                             <img src={images[0].img} alt="" />
-                        </div>
+                        </motion.div>
                     </div>
                     <div className="BoxGen B2">
                         <div className="BxLine1"></div>
-                        <div className="BxTitle">{images[1].title}</div>
+                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3}>{images[1].title}</motion.div>
                         <div className="BxLine2"></div>
                         <div className="BxImg">
                             <img src={images[1].img} alt="" />
@@ -128,7 +134,7 @@ const App = () => {
                     </div>
                     <div className="BoxGen B3">
                         <div className="BxLine1"></div>
-                        <div className="BxTitle">{images[2].title}</div>
+                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4}>{images[2].title}</motion.div>
                         <div className="BxLine2"></div>
                         <div className="BxImg">
                             <img src={images[2].img} alt="" />
@@ -136,7 +142,7 @@ const App = () => {
                     </div>
                     <div className="BoxGen B4">
                         <div className="BxLine1"></div>
-                        <div className="BxTitle">{images[3].title}</div>
+                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5}>{images[3].title}</motion.div>
                         <div className="BxLine2"></div>
                         <div className="BxImg">
                             <img src={images[3].img} alt="" />
@@ -144,14 +150,14 @@ const App = () => {
                     </div>
                     <div className="BoxGen B5">
                         <div className="BxLine1"></div>
-                        <div className="BxTitle">{images[4].title}</div>
+                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6}>{images[4].title}</motion.div>
                         <div className="BxLine2"></div>
                         <div className="BxImg">
                             <img src={images[4].img} alt="" />
                         </div>
                     </div>
                     <div className="BoxGen B6">
-                        <div className="BxTitle">{images[5].title}</div>
+                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7}>{images[5].title}</motion.div>
                         <div className="BxLine2"></div>
                         <div className="BxImg">
                             <img src={images[5].img} alt="" />

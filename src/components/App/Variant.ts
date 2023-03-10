@@ -26,7 +26,7 @@ export const HMenuParVariant: general = {
     })
 }
 
-// for the switching of --- and x
+// for the switching of --- (hamburger) and x
 export const menuVariant: general & {exit: Variant} = {
     initial: {
         y: 30
@@ -43,4 +43,14 @@ export const menuVariant: general & {exit: Variant} = {
             duration: 1
         }
     }
+}
+
+//--START-- second phase
+const deU = .2
+export const titleAnimation: general = {
+    initial: {y:100},
+
+    animate: ( custom ) => ({
+        y: -2, transition: {duration: 1, delay:deU * custom}
+    })
 }
