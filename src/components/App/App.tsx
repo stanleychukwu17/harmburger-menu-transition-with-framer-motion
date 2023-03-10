@@ -80,6 +80,13 @@ const App = () => {
         
     }, [phase, menuControl])
 
+
+
+    useEffect(() => {
+        setPhase('side2')
+    }, [])
+    
+
     return (
         <div className="AppMain">
             <div className="header">
