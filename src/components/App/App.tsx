@@ -38,33 +38,42 @@ for (let index = 1; index < 7; index++) {
 const App = () => {
     const [phase, setPhase] = useState<'side1'|'side2'|'side3'>('side1')
     const menuControl = useAnimationControls()
-    const t1 = useRef<gsap.core.Timeline>({} as gsap.core.Timeline)
+    const tControl = useRef<0|1>(0)
 
     const runBlockAnimation1 = () => {
         gsap.set('.absoluteCover', {display: 'block'})
         gsap.set('.absoluteChild', {scaleY: 0})
-        t1.current.play()
+
+        tControl.current === 0 ? runPart0Animation() : runPart1Animation()
+        tControl.current = (tControl.current === 0) ? 1 : 0
     }
 
-    useEffect(() => {
-        t1.current = gsap.timeline({defaults:{duration:1}})
+    const runPart0Animation = () => {
+        gsap.to('.a1', {scaleY: 1, duration: 1, transformOrigin: 'top'})
+        gsap.to('.a2', {scaleY: 1, duration: 1, transformOrigin: 'bottom'})
+        gsap.to('.a1', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'bottom'})
+        gsap.to('.a2', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'top', onComplete: () => { gsap.set('.absoluteCover', {display: 'none'}) }})
+    }
 
-        t1.current.to('.a1', { scaleY: 1 })
-            .to('.a2', {scaleY: 1, delay:-1})
-            .to('.a1', {scaleY: 0, delay: .2,  })
-            .to('.a2', {scaleY: 0, delay: -.2})
-
-        t1.current.pause()
-        return () => {}
-    }, [])
-    
+    const runPart1Animation = () => {
+        gsap.to('.a1', {scaleY: 1, duration: 1, transformOrigin: 'bottom'})
+        gsap.to('.a2', {scaleY: 1, duration: 1, transformOrigin: 'top'})
+        gsap.to('.a1', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'top'})
+        gsap.to('.a2', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'bottom', onComplete: () => { gsap.set('.absoluteCover', {display: 'none'}) }})
+    }
 
     // animates the menu from = to X
     useEffect(() => {
         if (phase === 'side1') {
             menuControl.start({y:0})
+
+            gsap.set('.productList, .productView', {display: 'none', delay:1})
+            gsap.set('.HomePageDts', {display: 'flex', delay:1})
         } else if (phase === 'side2') {
             menuControl.start({y:-43})
+
+            gsap.set('.HomePageDts, .productView', {display: 'none', delay:1})
+            gsap.set('.productList', {display: 'flex', delay:1})
         } else if (phase === 'side3') {
 
         }
