@@ -1,1 +1,17 @@
 @use '../../styles/util/' as u1;
+
+.customCursor {
+    $dimension: 35px;
+    position: fixed;
+    z-index: 10;
+    width: $dimension;
+    height: $dimension;
+    border-radius: 100%;
+    top: -15px;
+    left: -15px;
+    // top: calc(0px - calc($dimension/2));
+    // left: calc(0px - calc($dimension/2));
+    background-color: olivedrab;
+
+    transition: ease-out .3s;
+}

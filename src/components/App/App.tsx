@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import './app.scss';
 import { motion, useAnimationControls } from 'framer-motion';
 import { gsap } from 'gsap';
-// https://huemint.com/brand-intersection/#palette=f8ffff-17365b-2c7e8a-d3beaf - color palette
+import CustomCursor from '../CustomCursor/CustomCursor';
 
 
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import { HMenuParVariant, imageAnimation, line1Animation, line2Animation, titleAnimation } from './Variant';
+
+
 
 // import the images
 const listOfTitles: string[] = [
@@ -95,98 +97,101 @@ const App = () => {
     
 
     return (
-        <div className="AppMain">
-            <div className="header">
-                <motion.div variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink">Products</motion.div>
-                <motion.div
-                    variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu"
-                    onClick={
-                        () => {
-                            phase === 'side1' ? setPhase('side2') : setPhase('side1')
-                            runBlockAnimation1()
+        <>
+            <div className="AppMain">
+                <div className="header">
+                    <motion.div variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink">Products</motion.div>
+                    <motion.div
+                        variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu"
+                        onClick={
+                            () => {
+                                phase === 'side1' ? setPhase('side2') : setPhase('side1')
+                                runBlockAnimation1()
+                            }
                         }
-                    }
-                >
-                    <motion.div animate={menuControl} className="">
-                        <motion.div><AiOutlineMenu/></motion.div>
-                        <motion.div><AiOutlineClose/></motion.div>
-                    </motion.div>
-                </motion.div>
-            </div>
-            <motion.div variants={HMenuParVariant} custom={2} initial='initial' animate='animate' className="HomePageDts">
-                <div>Click on the menu button</div>
-            </motion.div>
-            <div className="productList">
-                <div className="PrdBoxCvr">
-                    <div className="BoxGen B1">
-                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5}>{images[0].title}</motion.div>
-                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
-                        <motion.div className="BxImg">
-                            <img src={images[0].img} alt="" />
-                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={3.5}></motion.div>
+                    >
+                        <motion.div animate={menuControl} className="">
+                            <motion.div><AiOutlineMenu/></motion.div>
+                            <motion.div><AiOutlineClose/></motion.div>
                         </motion.div>
-                    </div>
-                    <div className="BoxGen B2">
-                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={3.5}></motion.div>
-                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3}>{images[1].title}</motion.div>
-                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
-                        <div className="BxImg">
-                            <img src={images[1].img} alt="" />
-                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={4}></motion.div>
+                    </motion.div>
+                </div>
+                <motion.div variants={HMenuParVariant} custom={2} initial='initial' animate='animate' className="HomePageDts">
+                    <div>Click on the menu button</div>
+                </motion.div>
+                <div className="productList">
+                    <div className="PrdBoxCvr">
+                        <div className="BoxGen B1">
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5}>{images[0].title}</motion.div>
+                            <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
+                            <motion.div className="BxImg">
+                                <img src={images[0].img} alt="" />
+                                <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={3.5}></motion.div>
+                            </motion.div>
+                        </div>
+                        <div className="BoxGen B2">
+                            <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={3.5}></motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3}>{images[1].title}</motion.div>
+                            <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
+                            <div className="BxImg">
+                                <img src={images[1].img} alt="" />
+                                <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={4}></motion.div>
+                            </div>
+                        </div>
+                        <div className="BoxGen B3">
+                            <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={5}></motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4}>{images[2].title}</motion.div>
+                            <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
+                            <div className="BxImg">
+                                <img src={images[2].img} alt="" />
+                                <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={5}></motion.div>
+                            </div>
+                        </div>
+                        <div className="BoxGen B4">
+                            <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={6}></motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5}>{images[3].title}</motion.div>
+                            <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
+                            <div className="BxImg">
+                                <img src={images[3].img} alt="" />
+                                <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={6}></motion.div>
+                            </div>
+                        </div>
+                        <div className="BoxGen B5">
+                            <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={7}></motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6}>{images[4].title}</motion.div>
+                            <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
+                            <div className="BxImg">
+                                <img src={images[4].img} alt="" />
+                                <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={7}></motion.div>
+                            </div>
+                        </div>
+                        <div className="BoxGen B6">
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7}>{images[5].title}</motion.div>
+                            <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
+                            <div className="BxImg">
+                                <img src={images[5].img} alt="" />
+                                <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={8}></motion.div>
+                            </div>
                         </div>
                     </div>
-                    <div className="BoxGen B3">
-                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={5}></motion.div>
-                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4}>{images[2].title}</motion.div>
-                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
-                        <div className="BxImg">
-                            <img src={images[2].img} alt="" />
-                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={5}></motion.div>
-                        </div>
-                    </div>
-                    <div className="BoxGen B4">
-                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={6}></motion.div>
-                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5}>{images[3].title}</motion.div>
-                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
-                        <div className="BxImg">
-                            <img src={images[3].img} alt="" />
-                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={6}></motion.div>
-                        </div>
-                    </div>
-                    <div className="BoxGen B5">
-                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={7}></motion.div>
-                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6}>{images[4].title}</motion.div>
-                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
-                        <div className="BxImg">
+                </div>
+                <div className="productView">
+                    <div className="ProductMCvr">
+                        <div className="ProductImg">
                             <img src={images[4].img} alt="" />
-                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={7}></motion.div>
                         </div>
-                    </div>
-                    <div className="BoxGen B6">
-                        <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7}>{images[5].title}</motion.div>
-                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
-                        <div className="BxImg">
-                            <img src={images[5].img} alt="" />
-                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={8}></motion.div>
+                        <div className="ProductTitle">
+                            <div className="Ti2">{images[0].title}</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="productView">
-                <div className="ProductMCvr">
-                    <div className="ProductImg">
-                        <img src={images[4].img} alt="" />
-                    </div>
-                    <div className="ProductTitle">
-                        <div className="Ti2">{images[0].title}</div>
-                    </div>
+                <div className="absoluteCover">
+                    <div className="absoluteChild a1"></div>
+                    <div className="absoluteChild a2"></div>
                 </div>
             </div>
-            <div className="absoluteCover">
-                <div className="absoluteChild a1"></div>
-                <div className="absoluteChild a2"></div>
-            </div>
-        </div>
+            <CustomCursor />
+        </>
     )
 }
 export default App;
