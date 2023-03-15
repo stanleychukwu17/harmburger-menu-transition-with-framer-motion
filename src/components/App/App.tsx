@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import { HMenuParVariant, titleAnimation } from './Variant';
+import { HMenuParVariant, line1Animation, line2Animation, titleAnimation } from './Variant';
 
 // import the images
 const listOfTitles: string[] = [
@@ -82,10 +82,11 @@ const App = () => {
 
         }
         
-    }, [phase, menuControl])
+    }, [phase, menuControl, phase2Control])
 
 
 
+    // to be deleted soon, it just quickly shows phase 2 for me
     useEffect(() => {
         setTimeout(() => {
             setPhase('side2')
@@ -119,46 +120,47 @@ const App = () => {
                 <div className="PrdBoxCvr">
                     <div className="BoxGen B1">
                         <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5}>{images[0].title}</motion.div>
-                        <motion.div className="BxLine2"></motion.div>
+                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
                         <motion.div className="BxImg">
                             <img src={images[0].img} alt="" />
+                            <div className="imgCvr"></div>
                         </motion.div>
                     </div>
                     <div className="BoxGen B2">
-                        <div className="BxLine1"></div>
+                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={3.5}></motion.div>
                         <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3}>{images[1].title}</motion.div>
-                        <div className="BxLine2"></div>
+                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
                         <div className="BxImg">
                             <img src={images[1].img} alt="" />
                         </div>
                     </div>
                     <div className="BoxGen B3">
-                        <div className="BxLine1"></div>
+                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={5}></motion.div>
                         <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4}>{images[2].title}</motion.div>
-                        <div className="BxLine2"></div>
+                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
                         <div className="BxImg">
                             <img src={images[2].img} alt="" />
                         </div>
                     </div>
                     <div className="BoxGen B4">
-                        <div className="BxLine1"></div>
+                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={6}></motion.div>
                         <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5}>{images[3].title}</motion.div>
-                        <div className="BxLine2"></div>
+                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
                         <div className="BxImg">
                             <img src={images[3].img} alt="" />
                         </div>
                     </div>
                     <div className="BoxGen B5">
-                        <div className="BxLine1"></div>
+                        <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={7}></motion.div>
                         <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6}>{images[4].title}</motion.div>
-                        <div className="BxLine2"></div>
+                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
                         <div className="BxImg">
                             <img src={images[4].img} alt="" />
                         </div>
                     </div>
                     <div className="BoxGen B6">
                         <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7}>{images[5].title}</motion.div>
-                        <div className="BxLine2"></div>
+                        <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
                         <div className="BxImg">
                             <img src={images[5].img} alt="" />
                         </div>

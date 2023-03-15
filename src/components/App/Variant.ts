@@ -54,3 +54,27 @@ export const titleAnimation: general = {
         y: -2, transition: {duration: 1, delay:deU * custom}
     })
 }
+
+export const line1Animation: general = {
+    initial : {
+        scaleX: 0
+    },
+
+    animate: (custom) => ({
+        scaleX: 1,
+        originX: 'right',
+        transition: {duration: 1, delay:deU * custom}
+    })
+}
+
+export const line2Animation: general = {
+    initial : {
+        scaleX: 0
+    },
+
+    animate: (custom) => ({
+        scaleX: 1,
+        originX: 'left',
+        transition: {duration: 1.15, delay:deU * custom}
+    })
+}
