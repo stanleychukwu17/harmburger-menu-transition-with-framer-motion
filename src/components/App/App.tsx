@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import { HMenuParVariant, line1Animation, line2Animation, titleAnimation } from './Variant';
+import { HMenuParVariant, imageAnimation, line1Animation, line2Animation, titleAnimation } from './Variant';
 
 // import the images
 const listOfTitles: string[] = [
@@ -123,7 +123,7 @@ const App = () => {
                         <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
                         <motion.div className="BxImg">
                             <img src={images[0].img} alt="" />
-                            <div className="imgCvr"></div>
+                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={3.5}></motion.div>
                         </motion.div>
                     </div>
                     <div className="BoxGen B2">
@@ -132,6 +132,7 @@ const App = () => {
                         <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
                         <div className="BxImg">
                             <img src={images[1].img} alt="" />
+                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={4}></motion.div>
                         </div>
                     </div>
                     <div className="BoxGen B3">
@@ -140,6 +141,7 @@ const App = () => {
                         <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
                         <div className="BxImg">
                             <img src={images[2].img} alt="" />
+                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={5}></motion.div>
                         </div>
                     </div>
                     <div className="BoxGen B4">
@@ -148,6 +150,7 @@ const App = () => {
                         <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
                         <div className="BxImg">
                             <img src={images[3].img} alt="" />
+                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={6}></motion.div>
                         </div>
                     </div>
                     <div className="BoxGen B5">
@@ -156,6 +159,7 @@ const App = () => {
                         <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
                         <div className="BxImg">
                             <img src={images[4].img} alt="" />
+                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={7}></motion.div>
                         </div>
                     </div>
                     <div className="BoxGen B6">
@@ -163,6 +167,7 @@ const App = () => {
                         <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
                         <div className="BxImg">
                             <img src={images[5].img} alt="" />
+                            <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={8}></motion.div>
                         </div>
                     </div>
                 </div>

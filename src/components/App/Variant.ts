@@ -1,4 +1,4 @@
-import {Variant} from 'framer-motion'
+import {animate, Variant} from 'framer-motion'
 
 type general = {
     initial?: Variant;
@@ -46,7 +46,7 @@ export const menuVariant: general & {exit: Variant} = {
 }
 
 //--START-- second phase
-const deU = .2
+const deU = .35
 export const titleAnimation: general = {
     initial: {y:100},
 
@@ -78,3 +78,14 @@ export const line2Animation: general = {
         transition: {duration: 1.15, delay:deU * custom}
     })
 }
+
+export const imageAnimation: general = {
+    initial: {
+        scaleX: 1,
+    },
+    animate : (custom) => ({
+        scaleX: 0, originX: 'left',
+        transition: {duration: 1.15, delay:deU * custom}
+    })
+}
+//--end--
