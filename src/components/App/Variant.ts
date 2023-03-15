@@ -1,4 +1,4 @@
-import {animate, Variant} from 'framer-motion'
+import {Variant} from 'framer-motion'
 
 type general = {
     initial?: Variant;
