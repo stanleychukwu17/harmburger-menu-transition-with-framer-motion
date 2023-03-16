@@ -40,6 +40,7 @@ for (let index = 1; index < 7; index++) {
 // let the show begin
 const App = () => {
     const [phase, setPhase] = useState<'side1'|'side2'|'side3'>('side1')
+    const [productToView, setProductToView] = useState<number>(0)
     const menuControl = useAnimationControls()
     const phase2Control = useAnimationControls()
     const tControl = useRef<0|1>(0)
@@ -84,7 +85,9 @@ const App = () => {
             phase2Control.set('initial')
             phase2Control.start('animate')
         } else if (phase === 'side3') {
-
+            runBlockAnimation1()
+            gsap.set('.HomePageDts, .productList', {display: 'none', delay:1})
+            gsap.set('.productView', {display: 'flex', delay:1.2})
         }
         
     }, [phase, menuControl, phase2Control])
@@ -101,7 +104,6 @@ const App = () => {
             const imgBoundaries = imgItem.getBoundingClientRect()
             const imgUrl = imgItem.querySelector('img')!.getAttribute('src')!
             const {offsetX:x, offsetY:y} = event.nativeEvent
-            // console.log(event.nativeEvent.offsetX, event.nativeEvent.offsetY)
 
             setImageSnip({...imageSnip, show: true, imgUrl, top:imgBoundaries.top, left:imgBoundaries.left, x, y, target})
         } else {
@@ -125,7 +127,17 @@ const App = () => {
         <>
             <div className="AppMain">
                 <div className="header">
-                    <motion.div variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink">Products</motion.div>
+                    <motion.div
+                        variants={HMenuParVariant} custom={0} initial='initial' animate='animate' className="HLink"
+                        onClick={
+                            () => {
+                                setPhase('side2')
+                                runBlockAnimation1()
+                            }
+                        }
+                    >
+                        Products
+                    </motion.div>
                     <motion.div
                         variants={HMenuParVariant} custom={1} initial='initial' animate='animate' className="HMenu"
                         onClick={
@@ -147,7 +159,7 @@ const App = () => {
                 <div className="productList">
                     <div className="PrdBoxCvr">
                         <div className="BoxGen B1" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5}>{images[0].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5} onClick={() => { setPhase('side3'); setProductToView(0) }}>{images[0].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
                             <motion.div className="BxImg">
                                 <img src={images[0].img} alt="" />
@@ -156,7 +168,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B2" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={3.5}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3}>{images[1].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3} onClick={() => { setPhase('side3'); setProductToView(1) }}>{images[1].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
                             <div className="BxImg">
                                 <img src={images[1].img} alt="" />
@@ -165,7 +177,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B3" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={5}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4}>{images[2].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4} onClick={() => { setPhase('side3'); setProductToView(2) }}>{images[2].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
                             <div className="BxImg">
                                 <img src={images[2].img} alt="" />
@@ -174,7 +186,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B4" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={6}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5}>{images[3].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5} onClick={() => { setPhase('side3'); setProductToView(3) }}>{images[3].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
                             <div className="BxImg">
                                 <img src={images[3].img} alt="" />
@@ -183,7 +195,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B5" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={7}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6}>{images[4].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6} onClick={() => { setPhase('side3'); setProductToView(4) }}>{images[4].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
                             <div className="BxImg">
                                 <img src={images[4].img} alt="" />
@@ -191,7 +203,7 @@ const App = () => {
                             </div>
                         </div>
                         <div className="BoxGen B6" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7}>{images[5].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7} onClick={() => { setPhase('side3'); setProductToView(5) }}>{images[5].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
                             <div className="BxImg">
                                 <img src={images[5].img} alt="" />
@@ -203,10 +215,10 @@ const App = () => {
                 <div className="productView">
                     <div className="ProductMCvr">
                         <div className="ProductImg">
-                            <img src={images[4].img} alt="" />
+                            <img src={images[productToView].img} alt="" />
                         </div>
                         <div className="ProductTitle">
-                            <div className="Ti2">{images[0].title}</div>
+                            <div className="Ti2">{images[productToView].title}</div>
                         </div>
                     </div>
                 </div>

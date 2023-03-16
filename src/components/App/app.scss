@@ -19,6 +19,10 @@ body {
         align-items: center;
         justify-content: space-between;
 
+        .HLink {
+            cursor: pointer;
+        }
+
         .HMenu {
             @include u1.block_display();
             cursor: pointer;
