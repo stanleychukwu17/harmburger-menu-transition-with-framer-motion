@@ -14,9 +14,16 @@ export default function ImageSnippet({show, imgUrl, top, left}: componentProp) {
     const y = useMotionValue(0)
     const [pos, setPos] = useState({x:0, y:0})
     const imgItem = document.querySelector('.imgSnpCvr img') as HTMLImageElement
-    const cssObj = window.getComputedStyle(imgItem, null);
-    let bgColor = cssObj.getPropertyValue("height");
-    console.log(bgColor)
+
+    if (imgItem) {
+        const cssObj = window.getComputedStyle(imgItem, null);
+        let halfHeight = Number(cssObj.getPropertyValue("height").replace(/[^0-9.]/gi, '')) / 3;
+        let halfWidth = Number(cssObj.getPropertyValue("width").replace(/[^0-9.]/gi, '')) / 3;
+
+        top = top - halfHeight
+        left = left - halfWidth
+    }
+
 
     const updateMousePosition = useCallback((event: MouseEvent) => {
         x.set(event.clientX);

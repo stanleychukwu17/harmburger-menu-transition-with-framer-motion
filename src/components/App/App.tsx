@@ -93,7 +93,7 @@ const App = () => {
         const target = event.target as HTMLDivElement
         const parent = target.parentElement!
         const imgItem = parent.querySelector('div.BxImg') as HTMLDivElement
-        const {offsetX:x, offsetY:y} = event.nativeEvent
+        // const {offsetX:x, offsetY:y} = event.nativeEvent
 
         //@ts-ignore
         if (event.target.classList.contains('BxTitle')) {
@@ -101,8 +101,6 @@ const App = () => {
             const imgUrl = imgItem.querySelector('img')!.getAttribute('src')!
 
             setImageSnip({...imageSnip, show: true, imgUrl, top:imgBoundaries.top, left:imgBoundaries.left})
-            // const cssObj = window.getComputedStyle(imgItem, null);
-            // let bgColor = cssObj.getPropertyValue("left");
         } else {
             hideImageForThisBox()
         }
