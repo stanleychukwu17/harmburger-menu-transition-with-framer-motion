@@ -85,13 +85,17 @@ const App = () => {
             phase2Control.set('initial')
             phase2Control.start('animate')
         } else if (phase === 'side3') {
-            runBlockAnimation1()
             gsap.set('.HomePageDts, .productList', {display: 'none', delay:1})
             gsap.set('.productView', {display: 'flex', delay:1.2})
         }
         
     }, [phase, menuControl, phase2Control])
 
+    const updateToPhase3 = (productNum:number) => {
+        setProductToView(productNum);
+        runBlockAnimation1()
+        setPhase('side3');
+    }
 
     
     const showImageForThisBox = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -159,7 +163,7 @@ const App = () => {
                 <div className="productList">
                     <div className="PrdBoxCvr">
                         <div className="BoxGen B1" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5} onClick={() => { setPhase('side3'); setProductToView(0) }}>{images[0].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5} onClick={() => { updateToPhase3(0); }}>{images[0].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
                             <motion.div className="BxImg">
                                 <img src={images[0].img} alt="" />
@@ -168,7 +172,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B2" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={3.5}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3} onClick={() => { setPhase('side3'); setProductToView(1) }}>{images[1].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3} onClick={() => { updateToPhase3(1); }}>{images[1].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
                             <div className="BxImg">
                                 <img src={images[1].img} alt="" />
@@ -177,7 +181,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B3" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={5}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4} onClick={() => { setPhase('side3'); setProductToView(2) }}>{images[2].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4} onClick={() => { updateToPhase3(2); }}>{images[2].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
                             <div className="BxImg">
                                 <img src={images[2].img} alt="" />
@@ -186,7 +190,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B4" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={6}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5} onClick={() => { setPhase('side3'); setProductToView(3) }}>{images[3].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5} onClick={() => { updateToPhase3(3); }}>{images[3].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
                             <div className="BxImg">
                                 <img src={images[3].img} alt="" />
@@ -195,7 +199,7 @@ const App = () => {
                         </div>
                         <div className="BoxGen B5" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={7}></motion.div>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6} onClick={() => { setPhase('side3'); setProductToView(4) }}>{images[4].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6} onClick={() => { updateToPhase3(4); }}>{images[4].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
                             <div className="BxImg">
                                 <img src={images[4].img} alt="" />
@@ -203,7 +207,7 @@ const App = () => {
                             </div>
                         </div>
                         <div className="BoxGen B6" onMouseMove={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
-                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7} onClick={() => { setPhase('side3'); setProductToView(5) }}>{images[5].title}</motion.div>
+                            <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7} onClick={() => { updateToPhase3(5); }}>{images[5].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
                             <div className="BxImg">
                                 <img src={images[5].img} alt="" />
