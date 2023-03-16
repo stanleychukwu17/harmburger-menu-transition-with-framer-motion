@@ -43,7 +43,7 @@ const App = () => {
     const menuControl = useAnimationControls()
     const phase2Control = useAnimationControls()
     const tControl = useRef<0|1>(0)
-    const [imageSnip, setImageSnip] = useState({show:true, imgUrl:images[0].img})
+    const [imageSnip, setImageSnip] = useState({show:false, imgUrl:images[0].img, top:0, left:0})
 
     const runBlockAnimation1 = () => {
         gsap.set('.absoluteCover', {display: 'block'})
@@ -89,6 +89,29 @@ const App = () => {
     }, [phase, menuControl, phase2Control])
 
 
+    const showImageForThisBox = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const target = event.target as HTMLDivElement
+        const parent = target.parentElement!
+        const imgItem = parent.querySelector('div.BxImg') as HTMLDivElement
+        const {offsetX:x, offsetY:y} = event.nativeEvent
+
+        //@ts-ignore
+        if (event.target.classList.contains('BxTitle')) {
+            const imgBoundaries = imgItem.getBoundingClientRect()
+            const imgUrl = imgItem.querySelector('img')!.getAttribute('src')!
+
+            setImageSnip({...imageSnip, show: true, imgUrl, top:imgBoundaries.top, left:imgBoundaries.left})
+            // const cssObj = window.getComputedStyle(imgItem, null);
+            // let bgColor = cssObj.getPropertyValue("left");
+        } else {
+            hideImageForThisBox()
+        }
+        // console.log(x, y, event.target, parent)
+    }
+
+    const hideImageForThisBox = () => {
+        setImageSnip({...imageSnip, show: false})
+    }
 
     // to be deleted soon, it just quickly shows phase 2 for me
     useEffect(() => {
@@ -123,7 +146,7 @@ const App = () => {
                 </motion.div>
                 <div className="productList">
                     <div className="PrdBoxCvr">
-                        <div className="BoxGen B1">
+                        <div className="BoxGen B1" onMouseOver={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={2.5}>{images[0].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={3.5}></motion.div>
                             <motion.div className="BxImg">
@@ -131,7 +154,7 @@ const App = () => {
                                 <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={3.5}></motion.div>
                             </motion.div>
                         </div>
-                        <div className="BoxGen B2">
+                        <div className="BoxGen B2" onMouseOver={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={3.5}></motion.div>
                             <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={3}>{images[1].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={4}></motion.div>
@@ -140,7 +163,7 @@ const App = () => {
                                 <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={4}></motion.div>
                             </div>
                         </div>
-                        <div className="BoxGen B3">
+                        <div className="BoxGen B3" onMouseOver={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={5}></motion.div>
                             <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={4}>{images[2].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={5}></motion.div>
@@ -149,7 +172,7 @@ const App = () => {
                                 <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={5}></motion.div>
                             </div>
                         </div>
-                        <div className="BoxGen B4">
+                        <div className="BoxGen B4" onMouseOver={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={6}></motion.div>
                             <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={5}>{images[3].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={6}></motion.div>
@@ -158,7 +181,7 @@ const App = () => {
                                 <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={6}></motion.div>
                             </div>
                         </div>
-                        <div className="BoxGen B5">
+                        <div className="BoxGen B5" onMouseOver={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxLine1" variants={line1Animation} animate={phase2Control} custom={7}></motion.div>
                             <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={6}>{images[4].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={7}></motion.div>
@@ -167,7 +190,7 @@ const App = () => {
                                 <motion.div className="imgCvr" variants={imageAnimation} animate={phase2Control} custom={7}></motion.div>
                             </div>
                         </div>
-                        <div className="BoxGen B6">
+                        <div className="BoxGen B6" onMouseOver={(event) => { showImageForThisBox(event) }} onMouseOut={hideImageForThisBox}>
                             <motion.div className="BxTitle" variants={titleAnimation} animate={phase2Control} custom={7}>{images[5].title}</motion.div>
                             <motion.div className="BxLine2" variants={line2Animation} animate={phase2Control} custom={8}></motion.div>
                             <div className="BxImg">

@@ -65,6 +65,7 @@ body {
                 overflow: hidden;
 
                 .BxTitle {
+                    @include u1.block_display();
                     font-size: u1.rem(28);
                     font-weight: 600;
                     transition: ease-out .3s;
