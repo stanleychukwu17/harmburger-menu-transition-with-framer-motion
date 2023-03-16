@@ -1,0 +1,10 @@
+@use '../../styles/util/' as u1;
+
+.imgSnpCvr {
+    width: 185px;
+
+    img {
+        position: relative;
+        max-width: 100%;
+    }
+}

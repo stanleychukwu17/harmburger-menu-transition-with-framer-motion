@@ -8,6 +8,7 @@ import CustomCursor from '../CustomCursor/CustomCursor';
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import { HMenuParVariant, imageAnimation, line1Animation, line2Animation, titleAnimation } from './Variant';
+import ImageSnippet from '../ImageSnippet/ImageSnippet';
 
 
 
@@ -42,6 +43,7 @@ const App = () => {
     const menuControl = useAnimationControls()
     const phase2Control = useAnimationControls()
     const tControl = useRef<0|1>(0)
+    const [imageSnip, setImageSnip] = useState({show:true, imgUrl:images[0].img})
 
     const runBlockAnimation1 = () => {
         gsap.set('.absoluteCover', {display: 'block'})
@@ -191,6 +193,7 @@ const App = () => {
                 </div>
             </div>
             <CustomCursor />
+            <ImageSnippet {...imageSnip} />
         </>
     )
 }
