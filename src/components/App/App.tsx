@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import './app.scss';
-import { motion, useAnimationControls, useTransform, useMotionValue } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 import { gsap } from 'gsap';
 import CustomCursor from '../CustomCursor/CustomCursor';
 
@@ -120,11 +120,11 @@ const App = () => {
     }
 
     // to be deleted soon, it just quickly shows phase 2 for me
-    useEffect(() => {
-        setTimeout(() => {
-            setPhase('side2')
-        }, 500)
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setPhase('side2')
+    //     }, 500)
+    // }, [])
     
 
     return (
