@@ -6,6 +6,7 @@ export default function CustomCursor() {
     const x = useMotionValue(0)
     const y = useMotionValue(0)
 
+    // using framerMotion to move the custom mouse with re-rending the page.. framerMotion, you're awesome!
     const updateMousePosition = useCallback((event: MouseEvent) => {
         x.set(event.clientX);
         y.set(event.clientY);
