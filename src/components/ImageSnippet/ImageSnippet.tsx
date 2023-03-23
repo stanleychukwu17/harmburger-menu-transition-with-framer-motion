@@ -47,14 +47,6 @@ export default function ImageSnippet({show, imgUrl, top, left, x, y, target}: co
         left = left - halfWidth
     }
 
-
-
-    if (show ) {
-        // console.log(top, left)
-    }
-
-
-
     return (
         <>
             {show && (
