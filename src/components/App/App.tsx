@@ -1,15 +1,15 @@
 import {useEffect, useRef, useState} from 'react';
-import './app.scss';
 import { motion, useAnimationControls } from 'framer-motion';
 import { gsap } from 'gsap';
-import CustomCursor from '../CustomCursor/CustomCursor';
 
+import CustomCursor from '../CustomCursor/CustomCursor'; // imports the custom cursor, the green circle that follows the mouse pointer all around the page
+import ImageSnippet from '../ImageSnippet/ImageSnippet'; // shows a sneak peak of a product when a product link is hovered on
+
+import './app.scss';
 
 // from react-icons
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import { HMenuParVariant, imageAnimation, line1Animation, line2Animation, titleAnimation } from './Variant';
-import ImageSnippet from '../ImageSnippet/ImageSnippet';
-
+import { HMenuParVariant, imageAnimation, line1Animation, line2Animation, titleAnimation } from './Variant'; // framer-motion variants
 
 
 // import the images
@@ -22,9 +22,9 @@ const listOfTitles: string[] = [
     'Nike Light super Od-110',
 ]
 type imgType = {
-    id:number,
+    id: number,
     title: string,
-    img:string,
+    img: string,
 }
 const images: imgType[] = []
 // load the images to be displayed into the array database
@@ -39,14 +39,15 @@ for (let index = 1; index < 7; index++) {
 
 // let the show begin
 const App = () => {
-    const [phase, setPhase] = useState<'side1'|'side2'|'side3'>('side1')
-    const [productToView, setProductToView] = useState<number>(0)
+    const [phase, setPhase] = useState<'side1'|'side2'|'side3'>('side1') // for switching btw different phases
+    const [productToView, setProductToView] = useState<number>(0) // stores the product id - i.e the product to be viewed
     const menuControl = useAnimationControls()
     const phase2Control = useAnimationControls()
-    const tControl = useRef<0|1>(0)
-    const initialTarget = document.querySelector('div.AppMain') as HTMLDivElement
-    const [imageSnip, setImageSnip] = useState({show:false, imgUrl:images[0].img, top:0, left:0, x:0, y:0, target:initialTarget})
+    const tControl = useRef<0|1>(0) // helps us with which part of the block slider animations to run, should the blocks go up or down
+    const targetElement = document.querySelector('div.AppMain') as HTMLDivElement
+    const [imageSnip, setImageSnip] = useState({show:false, imgUrl:images[0].img, top:0, left:0, x:0, y:0, target:targetElement})
 
+    //--start-- handles the block animations btw phases
     const runBlockAnimation1 = () => {
         gsap.set('.absoluteCover', {display: 'block'})
         gsap.set('.absoluteChild', {scaleY: 0})
@@ -59,55 +60,67 @@ const App = () => {
         gsap.to('.a1', {scaleY: 1, duration: 1, transformOrigin: 'top'})
         gsap.to('.a2', {scaleY: 1, duration: 1, transformOrigin: 'bottom'})
         gsap.to('.a1', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'bottom'})
-        gsap.to('.a2', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'top', onComplete: () => { gsap.set('.absoluteCover', {display: 'none'}) }})
+        gsap.to('.a2', {
+            scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'top',
+            onComplete: () => {
+                gsap.set('.absoluteCover', {display: 'none'})
+            }
+        })
     }
 
     const runPart1Animation = () => {
         gsap.to('.a1', {scaleY: 1, duration: 1, transformOrigin: 'bottom'})
         gsap.to('.a2', {scaleY: 1, duration: 1, transformOrigin: 'top'})
         gsap.to('.a1', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'top'})
-        gsap.to('.a2', {scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'bottom', onComplete: () => { gsap.set('.absoluteCover', {display: 'none'}) }})
+        gsap.to('.a2', {
+            scaleY: 0, duration: 1, delay: 1.2, transformOrigin: 'bottom',
+            onComplete: () => {
+                gsap.set('.absoluteCover', {display: 'none'})
+            }
+        })
     }
+    //--end--
 
-    // animates the menu from = to X
+    // animates the hamburger menu from = to X, and also handles the displaying of the page for the current phase selected
     useEffect(() => {
         if (phase === 'side1') {
             menuControl.start({y:0})
 
-            gsap.set('.productList, .productView', {display: 'none', delay:1})
+            gsap.set('.productList, .productView', {display: 'none', delay:1}) // hides other pages except the home page
             gsap.set('.HomePageDts', {display: 'flex', delay:1.2})
         } else if (phase === 'side2') {
             menuControl.start({y:-43})
 
-            gsap.set('.HomePageDts, .productView', {display: 'none', delay:1})
+            gsap.set('.HomePageDts, .productView', {display: 'none', delay:1}) // hides other pages except the product list page
             gsap.set('.productList', {display: 'flex', delay:1.2})
 
             phase2Control.set('initial')
-            phase2Control.start('animate')
+            phase2Control.start('animate') // animates all of the items and elements in the productListing page
         } else if (phase === 'side3') {
-            gsap.set('.HomePageDts, .productList', {display: 'none', delay:1})
+            gsap.set('.HomePageDts, .productList', {display: 'none', delay:1}) // hides other pages except the product viewing page
             gsap.set('.productView', {display: 'flex', delay:1.2})
         }
         
     }, [phase, menuControl, phase2Control])
 
+    // gets the phase 3 ready for viewing , the phase 3 is the product viewing page
     const updateToPhase3 = (productNum:number) => {
-        setProductToView(productNum);
+        setProductToView(productNum); // updates the productId to view
         runBlockAnimation1()
         setPhase('side3');
     }
 
-    
+    // shows the sneak peak of an item image, when the item link is hovered on the productList page @phase2
     const showImageForThisBox = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const target = event.target as HTMLDivElement
-        const parent = target.parentElement!
-        const imgItem = parent.querySelector('div.BxImg') as HTMLDivElement
+        const target = event.target as HTMLDivElement // we are hopeful that the viewier is hovering over the link 
+        const parent = target.parentElement! // go to the parent element
+        const imgItem = parent.querySelector('div.BxImg') as HTMLDivElement // searches for the image inside the parent
 
         //@ts-ignore
-        if (event.target.classList.contains('BxTitle')) {
+        if (event.target.classList.contains('BxTitle')) { // this means the hovered item is the itemLink which is what we want
             const imgBoundaries = imgItem.getBoundingClientRect()
             const imgUrl = imgItem.querySelector('img')!.getAttribute('src')!
-            const {offsetX:x, offsetY:y} = event.nativeEvent
+            const {offsetX:x, offsetY:y} = event.nativeEvent // the distance of the image from the left and top side of the viewport
 
             setImageSnip({...imageSnip, show: true, imgUrl, top:imgBoundaries.top, left:imgBoundaries.left, x, y, target})
         } else {
@@ -115,17 +128,13 @@ const App = () => {
         }
     }
 
+    // stops showing the sneak peak of the item image
     const hideImageForThisBox = () => {
         setImageSnip({...imageSnip, show: false})
     }
 
-    // to be deleted soon, it just quickly shows phase 2 for me
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setPhase('side2')
-    //     }, 500)
-    // }, [])
-    
+    // to be deleted, it just quickly shows phase 2 for me
+    // useEffect(() => { setTimeout(() => { setPhase('side2') }, 500) }, [])
 
     return (
         <>
