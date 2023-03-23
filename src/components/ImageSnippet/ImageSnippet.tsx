@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
+import { imageCoverVariant } from '../App/Variant';
 import './imageSnippet.scss'
 
 type componentProp = {
@@ -37,7 +38,6 @@ export default function ImageSnippet({show, imgUrl, top, left, x, y, target}: co
     const moveX = useTransform(xInput, [0, titleWidth], [-(halfWidth), (halfWidth)])
     const moveY = useTransform(yInput, [0, titleHeight], [-(halfHeight), (halfHeight)])
 
-
     if (imgItem) {
         const cssObj = window.getComputedStyle(imgItem, null);
         let halfHeight = Number(cssObj.getPropertyValue("height").replace(/[^0-9.]/gi, '')) / 3;
@@ -50,7 +50,7 @@ export default function ImageSnippet({show, imgUrl, top, left, x, y, target}: co
     return (
         <>
             {show && (
-                <motion.div className="imgSnpCvr" style={{top, left, x:moveX, y:moveY}}>
+                <motion.div className="imgSnpCvr" variants={imageCoverVariant} initial='initial' animate='animate' style={{top, left, x:moveX, y:moveY}}>
                     <img src={imgUrl} alt="product" />
                 </motion.div>
             )}

@@ -89,3 +89,20 @@ export const imageAnimation: general = {
     })
 }
 //--end--
+
+//--START-- for image snippets
+export const imageCoverVariant: general = {
+    initial: {
+        opacity: 0
+    },
+
+    animate: {
+        opacity:1,
+        transition: {
+            opacity: {
+                duration: .3
+            }
+        }
+    }
+}
+//--END--
